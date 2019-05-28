@@ -1,16 +1,16 @@
 import React from 'react';
 import withStyles from 'react-jss';
 import { connect } from 'react-redux';
-import { Dialog } from 'material-ui';
+import Dialog from '@material-ui/core/Dialog';
 import {
   Warning, WarningHeader, WarningText
-} from 'emerald-js-ui';
+} from '@emeraldplatform/ui';
 import { Button } from '@emeraldwallet/ui';
 import screen from '../../../store/wallet/screen';
 import accounts from '../../../store/vault/accounts';
 import history from '../../../store/wallet/history';
 
-export const styles2 = {
+export const styles = {
   title: {
     color: '#191919',
     fontSize: '14px',
@@ -35,7 +35,7 @@ export class HideAccountDialog extends React.Component {
           <div style={{marginRight: '20px'}}>
             <Warning>
               <WarningHeader>Hiding accounts will NOT delete your account key files.</WarningHeader>
-              <WarningText>This will only hide the account. If you really need to delete an account on disk, you can use Emerald-CLI, or manually delete the account key files from the computer's file system.</WarningText>
+              <WarningText>This will only hide the account. If you really need to delete an account on disk, you can use Smilo-CLI, or manually delete the account key files from the computer's file system.</WarningText>
             </Warning>
           </div>
           <Button
@@ -59,7 +59,7 @@ export class HideAccountDialog extends React.Component {
   }
 }
 
-const StyledHideAccountDialog = withStyles(styles2)(HideAccountDialog);
+const StyledHideAccountDialog = withStyles(styles)(HideAccountDialog);
 
 export default connect(
   (state, ownProps) => ({

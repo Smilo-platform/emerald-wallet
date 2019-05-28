@@ -1,12 +1,13 @@
 import * as React from 'react';
 import * as QRCode from 'qrcode.react';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/styles';
+
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import IconButton from '@material-ui/core/IconButton';
 import {Address as AccountAddress} from '@emeraldplatform/ui';
-import {Close as CloseIcon} from "@emeraldplatform/ui-icons";
-import {CSSProperties} from "@material-ui/core/styles/withStyles";
+import {Close as CloseIcon} from '@emeraldplatform/ui-icons';
+import {CSSProperties} from '@material-ui/styles';
 
 export const styles = {
   container: {
@@ -80,12 +81,12 @@ const ReceiveDialog = ({address, onClose, classes}: Props) => {
             <QRCode value={address} size={qrCodeSize}/>
           </div>
           <div style={{marginTop: '0px'}}>
-            <div className={classes.headerText}>Top up your account with ETC</div>
+            <div className={classes.headerText}>Top up your account with XSM</div>
             <div className={classes.address}>
               <AccountAddress id={address}/>
             </div>
             <div className={classes.note}>
-              Share your account address and use it to top up your account with ETC from any other service.
+              Share your account address and use it to top up your account with XSM from any other service.
               It may take some time for your coins be deposited.
             </div>
           </div>

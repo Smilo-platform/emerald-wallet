@@ -1,6 +1,6 @@
 const log = require('electron-log');
 const fs = require('fs');
-const path = require('path');
+const path = require('path'); // eslint-disable-line
 const app = require('electron').app; // eslint-disable-line
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -8,7 +8,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 function getBinDir() {
   // Use project base dir for development.
-  return isDev ? './' : process.resourcesPath;
+  return "bin";
 }
 
 function getLogDir() {
@@ -66,18 +66,31 @@ function deleteIfExists(filePath) {
 
 
 const knownChains = [
-  { name: 'mainnet', id: 61 },
-  { name: 'morden', id: 62 },
+  { name: 'mainnet', id: 20080914 },
+  { name: 'testnet', id: 10 },
   { name: 'eth', id: 1 },
 ];
 
 function isValidChain(chain) {
-  const found = knownChains.filter((c) => c.name === chain.name && c.id === parseInt(chain.id, 10));
-  return found.length === 1;
+  if (chain && typeof chain === 'object') {
+    const found = knownChains.filter((c) => c.name === chain.name && c.id === parseInt(chain.id, 10));
+    return found.length === 1;
+  }
+  return false;
 }
 
 const URL_FOR_CHAIN = {
   mainnet: {
+    launchType: 3,
+    url: 'https://api.smilo.network/',
+    type: 'remote',
+  },
+  testnet: {
+    launchType: 3,
+    url: 'https://testnet-wallet.smilo.network/api',
+    type: 'remote',
+  },
+  etc: {
     launchType: 3,
     url: 'https://web3.emeraldwallet.io/etc',
     type: 'remote',
